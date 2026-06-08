@@ -91,9 +91,12 @@ opens RVIZ and gazebo with a simulation of the panda robot with a moveit positio
 
 ##### moveit velocity controller
 
-    roslaunch franka_gazebo panda.launch controller:=effort_joint_trajectory_controller 
+    roslaunch panda_simulator_servo simulator.launch
 
-Gazeo headless with moveit and servo controller.
+Gazeo headless with moveit and servo controller. Needs compile it before running
+
+    cd /workspace/catkin_ws && catkin_make --only-pkg-with-deps panda_simulator_servo
+
 
 ### Create a own package/node: 
 
