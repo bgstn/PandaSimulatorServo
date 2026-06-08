@@ -1,0 +1,22 @@
+<launch>
+  <arg name="gazebo_ui" default="true" />
+
+  <!-- Gazebo with effort trajectory controller -->
+  <include file="$(find franka_gazebo)/launch/panda.launch">
+    <arg name="controller" value="effort_joint_trajectory_controller" />
+    <arg name="headless" value="$(arg gazebo_ui)" />
+  </include>
+
+  <!-- MoveIt (robot description already loaded by Gazebo) -->
+  <include file="$(find panda_moveit_config)/launch/demo.launch">
+    <arg name="moveit_controller_manager" value="simple" />
+    <arg name="load_robot_description" value="false" />
+  </include>
+
+  <!-- Servo server -->
+  <node name="servo_server" pkg="moveit_servo" type="servo_server" output="screen">
+    <param name="parameter_ns" value="servo" />
+    <rosparam ns="servo" command="load" file="$(find panda_simulator_servo)/config/panda_servo.yaml" />
+  </node>
+
+</launch>

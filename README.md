@@ -89,6 +89,11 @@ opens RVIZ and gazebo with a simulation of the panda robot with a cartesian impe
 
 opens RVIZ and gazebo with a simulation of the panda robot with a moveit position controller. You can now add a motion planner in RVIZ if you want. But all move_group topics to control the robot are now started.
 
+##### moveit velocity controller
+
+    roslaunch franka_gazebo panda.launch controller:=effort_joint_trajectory_controller 
+
+Gazeo headless with moveit and servo controller.
 
 ### Create a own package/node: 
 
